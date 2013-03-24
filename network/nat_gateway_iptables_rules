@@ -1,0 +1,41 @@
+*mangle
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+
+COMMIT
+
+*nat
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Redirect a port
+# -A PREROUTING -i wan -p tcp -m tcp --dport 3389 -j DNAT --to-destination 192.168.0.21
+
+# Enable NAT
+-A POSTROUTING -o wan -j MASQUERADE
+
+COMMIT
+*filter
+:INPUT DROP [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Allow already established connections to communicate inwards
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Accept all incoming traffic on LAN/localhost
+-A INPUT -i lo -j ACCEPT
+-A INPUT -i lan -j ACCEPT
+
+# Accept ICMP
+-A INPUT -p icmp -j ACCEPT
+
+{% for port in pillar['network']['wan']['open_ports'] %}
+-A INPUT -p tcp -m tcp --dport {{ port }} -j ACCEPT
+{% endfor %}
+
+COMMIT

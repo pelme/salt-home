@@ -1,0 +1,17 @@
+# This file is managed by salt, don't touch!
+
+auto lo
+iface lo inet loopback
+
+# LAN
+auto lan
+allow-hotplug lan
+iface lan inet static
+    address {{ pillar['network']['lan']['ip'] }}
+    netmask 255.255.255.0
+
+# WAN
+auto wan
+allow-hotplug wan
+iface wan inet dhcp
+

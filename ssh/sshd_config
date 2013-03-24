@@ -1,0 +1,13 @@
+Protocol 2
+
+ChallengeResponseAuthentication no
+
+PasswordAuthentication no
+
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+AcceptEnv LANG LC_*
+UsePAM yes

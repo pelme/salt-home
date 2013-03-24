@@ -1,0 +1,4 @@
+{% for ether, hostname in pillar['network']['lan']['ethers'].items() %}
+{{ ether}} {{ hostname }}
+{% endfor %}
+
