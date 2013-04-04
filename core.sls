@@ -22,6 +22,7 @@ corepkgs:
       - git-annex
       - bind9-host
       - dnsutils
+      - ca-certificates
 {% if grains['virtual'] == 'physical'%}
       - lvm2
       - parted
