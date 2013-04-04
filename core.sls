@@ -1,6 +1,6 @@
 include:
   - ssh
-  - ssh.keys
+  - andreas
   - ntp
   - locale
   - timezone
@@ -23,6 +23,7 @@ corepkgs:
       - bind9-host
       - dnsutils
       - ca-certificates
+      - cryptsetup
 {% if grains['virtual'] == 'physical'%}
       - lvm2
       - parted
