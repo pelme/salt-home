@@ -4,6 +4,8 @@ include:
   - ntp
   - locale
   - timezone
+  - annex
+  - ftp
 {% if grains['virtual'] == 'physical'%}
   - network
   - network.interface_names

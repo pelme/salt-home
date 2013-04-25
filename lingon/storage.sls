@@ -14,6 +14,3 @@
     - opts:
       - defaults,noauto
 
-ftp-group:
-  group.present:
-    - name: ftp
