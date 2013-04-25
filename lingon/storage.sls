@@ -1,14 +1,18 @@
-/storage:
+/safe:
   mount.mounted:
-    - device: LABEL=storage
+    - device: LABEL=safe
     - fstype: btrfs
     - mkmnt: True
     - opts:
       - defaults,noauto
 
-storage-group:
-  group.present:
-    - name: storage
+/ftp:
+  mount.mounted:
+    - device: LABEL=ftp
+    - fstype: btrfs
+    - mkmnt: True
+    - opts:
+      - defaults,noauto
 
 ftp-group:
   group.present:
