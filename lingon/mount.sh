@@ -5,4 +5,7 @@ cryptsetup luksOpen /dev/sdb1 beta
 
 vgchange -a y
 btrfs device scan
-mount -a
+
+mount /safe
+mount /ftp
+
