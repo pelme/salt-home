@@ -29,7 +29,6 @@ corepkgs:
 {% if grains['virtual'] == 'physical'%}
       - lvm2
       - parted
-      - mdadm
 
 {% endif %}
 
