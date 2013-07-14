@@ -4,7 +4,7 @@
     - fstype: btrfs
     - mkmnt: True
     - opts:
-      - defaults,noauto
+      - defaults,noauto,noatime
 
 /ftp:
   mount.mounted:
@@ -12,5 +12,10 @@
     - fstype: btrfs
     - mkmnt: True
     - opts:
-      - defaults,noauto
+      - defaults,noauto,noatime
 
+
+/root/mount.sh:
+  file.managed:
+    - source: salt://lingon/mount.sh
+    - mode: 0700
